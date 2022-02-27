@@ -1,0 +1,76 @@
+type CreateUserPayload {
+  """The created user"""
+  user: User!
+}
+
+interface IBasePostEvent {
+  """Event type"""
+  eventType: PostEventType!
+}
+
+type Mutation {
+  createPost(input: PostInput!): Post!
+  createUser(input: UserInput!): CreateUserPayload!
+}
+
+"""When a new post is created"""
+type NewPostEvent implements IBasePostEvent {
+  """Event type"""
+  eventType: PostEventType!
+
+  """Post id"""
+  id: ID!
+
+  """Post title"""
+  title: String!
+}
+
+"""Blog post"""
+type Post {
+  """Post author"""
+  author: User
+  content: String!
+  created: String!
+  id: ID!
+  title: String!
+}
+
+enum PostEventType {
+  NewPost
+}
+
+input PostInput {
+  authorId: Int!
+  content: String!
+  title: String!
+}
+
+type Query {
+  """Blog post"""
+  post(id: ID): Post
+
+  """List of posts"""
+  posts: [Post!]!
+  user(id: ID): User
+
+  """List of users"""
+  users: [User!]!
+}
+
+type Subscription {
+  """Events related to posts"""
+  postEvents: IBasePostEvent!
+}
+
+"""Blog user"""
+type User {
+  id: Int!
+  name: String!
+
+  """User's blog posts"""
+  posts: [Post!]!
+}
+
+input UserInput {
+  name: String!
+}

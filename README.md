@@ -1,5 +1,8 @@
 # Pothos GraphQL Server Example
 
+Reproduction sample for:
+https://github.com/enisdenjo/graphql-ws/discussions/320
+
 This repo demonstrates how to use the graphQL code-based 
 [pothos](https://pothos-graphql.dev) (formerly named `giraphql`) library to build queries,
 mutations, subscriptions, and add directives. 

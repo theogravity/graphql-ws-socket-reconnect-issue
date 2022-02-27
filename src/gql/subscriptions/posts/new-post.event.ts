@@ -18,7 +18,7 @@ builder.objectType(NewPostEvent, {
   description: 'When a new post is created',
   interfaces: [IBasePostEvent],
   isTypeOf: (value) => {
-    return value.eventType === PostEventType.NewPost;
+    return (value as NewPostEvent).eventType === PostEventType.NewPost;
   },
   fields: (t) => ({
     id: t.exposeID('id', {

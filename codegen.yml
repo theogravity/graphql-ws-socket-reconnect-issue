@@ -24,3 +24,8 @@ generates:
       avoidOptionals: true
       # From personal experience, it's better to have this defined as the object or null vs undefined
       maybeValue: T | null
+  ./frontend/gql-schema/fragmentTypes.json:
+    schema: "./gql-schema/schema.graphql"
+    documents: ./src/gql/documents/*.ts
+    plugins:
+      - fragment-matcher
