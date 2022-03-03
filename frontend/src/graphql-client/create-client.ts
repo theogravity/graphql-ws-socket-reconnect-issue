@@ -33,7 +33,7 @@ export function createApolloSubscriptionClient({
         disconnected = true;
       },
       connected: (socket) => {
-        if (!disconnected && onConnected) {
+        if (onConnected) {
           onConnected(socket);
         }
 
